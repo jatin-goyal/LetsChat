@@ -9,6 +9,7 @@ import { auth, db } from "../firebase";
 import { addDoc, collection, query, where } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
+import Chat from "./Chat";
 
 export default function Sidebar() {
   const [user] = useAuthState(auth);
@@ -47,7 +48,9 @@ export default function Sidebar() {
   return (
     <Container>
       <Header>
-        <UserAvatar onClick={() => signOut(auth)} />
+        <UserAvatar onClick={() => signOut(auth)}>
+          {user.email[0].toUpperCase()}
+        </UserAvatar>
         <IconsContainer>
           <IconButton>
             <ChatIcon />
@@ -64,11 +67,19 @@ export default function Sidebar() {
       </Search>
 
       <StartChat onClick={createChat}>Start a new chat</StartChat>
+      <ChatList>
+        {chatsSnapshot?.docs.map((chat) => (
+          <Chat key={chat.id} id={chat.id} users={chat.data().users} />
+        ))}
+      </ChatList>
     </Container>
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div`
+  border-right: 1px solid #ccc;
+  height: 100vh;
+`;
 
 const Header = styled.div`
   display: flex;
@@ -109,7 +120,9 @@ const SearchInput = styled.input`
 
 const StartChat = styled(Button)`
   width: 100%;
-  border: none;
+  /* border: 1px solid #ccc; */
+  height: 50px;
+  /* border: none; */
   color: black;
 
   cursor: pointer;
@@ -117,4 +130,8 @@ const StartChat = styled(Button)`
   &:hover {
     background-color: whitesmoke;
   }
+`;
+
+const ChatList = styled.div`
+  overflow-y: scroll;
 `;

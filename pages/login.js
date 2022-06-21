@@ -7,9 +7,7 @@ import { auth, provider } from "../firebase";
 export default function Login() {
   const signIn = () => {
     signInWithPopup(auth, provider)
-      .then(() => {
-        console.log(auth);
-      })
+      .then(() => {})
       .catch((err) => {
         alert(err.message);
       });
