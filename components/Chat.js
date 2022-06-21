@@ -31,9 +31,23 @@ export default function Chat({ id, users }) {
   };
 
   return (
-    <Container onClick={enterChat}>
-      <UserAvatar>{recipientEmail[0].toUpperCase()}</UserAvatar>
-      <p style={{ fontSize: "14px" }}>{recipientEmail}</p>
+    <Container
+      onClick={enterChat}
+      style={{
+        borderBottom: "1px solid #636363e8",
+      }}
+    >
+      <UserAvatar style={{ backgroundColor: "#21a4a0e8" }}>
+        {recipientEmail[0].toUpperCase()}
+      </UserAvatar>
+      <p
+        style={{
+          fontSize: "14px",
+          color: "whitesmoke",
+        }}
+      >
+        {recipientEmail}
+      </p>
     </Container>
   );
 }
@@ -45,11 +59,12 @@ const Container = styled.div`
   padding: 12px;
   word-break: break-word;
   :hover {
-    background-color: #e9eaeb;
+    background-color: #393939e8;
   }
 `;
 
 const UserAvatar = styled(Avatar)`
   margin: 5px;
   margin-right: 15px;
+  background-color: #21a4a0e8;
 `;

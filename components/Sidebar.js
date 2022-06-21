@@ -1,5 +1,6 @@
 import { Addchart, MoreVert } from "@mui/icons-material";
 import ChatIcon from "@mui/icons-material/Chat";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import SearchIcon from "@mui/icons-material/Search";
 import { Avatar, Button, IconButton } from "@mui/material";
 import styled from "styled-components";
@@ -54,22 +55,30 @@ export default function Sidebar() {
         >
           {user.email[0].toUpperCase()}
         </UserAvatar>
+        <UserEmail>{user.email}</UserEmail>
+        {/* <SignOut style={{ flex: 0.9, color: "whitesmoke", cursor: "pointer" }}>
+          Sign Out
+        </SignOut> */}
         <IconsContainer>
-          <IconButton onClick={createChat}>
+          <IconButton onClick={createChat} style={{ color: "white" }}>
             <ChatIcon />
           </IconButton>
-          <IconButton>
-            <MoreVert />
+          <IconButton style={{ color: "white" }} onClick={() => signOut(auth)}>
+            <PowerSettingsNewIcon />
           </IconButton>
+          <LogOut onClick={() => signOut(auth)}>Log Out</LogOut>
         </IconsContainer>
       </Header>
 
-      <Search>
+      <Search style={{ color: "white ", border: "none" }}>
         <SearchIcon />
-        <SearchInput placeholder="Search in chats" />
+        <SearchInput placeholder="Search in chats" style={{ color: "white" }} />
       </Search>
 
-      <StartChat style={{ color: "#022f62 " }} onClick={createChat}>
+      <StartChat
+        style={{ color: "white ", border: "none" }}
+        onClick={createChat}
+      >
         Start a new chat
       </StartChat>
       <ChatList>
@@ -83,7 +92,7 @@ export default function Sidebar() {
 
 const Container = styled.div`
   flex: 0.35;
-  border-right: 1px solid #ccc;
+  background-color: #444444e8;
   height: 100vh;
 `;
 
@@ -91,13 +100,14 @@ const Header = styled.div`
   display: flex;
   position: sticky;
   top: 0;
-  background-color: #fff;
+  background-color: #12483fe8;
+  color: white !important;
   z-index: 1;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
   height: 70px;
-  border-bottom: 1px solid #eee;
+  border: none;
 `;
 
 const UserAvatar = styled(Avatar)`
@@ -108,7 +118,30 @@ const UserAvatar = styled(Avatar)`
   }
 `;
 
-const IconsContainer = styled.div``;
+const LogOut = styled.p`
+  text-align: center;
+  padding: 10px;
+  background-color: #343e3be8;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: -10px;
+  opacity: 0;
+`;
+
+const IconsContainer = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+
+  :hover {
+    ${LogOut} {
+      opacity: 1;
+    }
+  }
+`;
 
 const Search = styled.div`
   display: flex;
@@ -119,6 +152,7 @@ const Search = styled.div`
 `;
 
 const SearchInput = styled.input`
+  background: none;
   outline-width: 0;
   border: none;
   flex: 1;
@@ -141,10 +175,19 @@ const StartChat = styled(Button)`
 const ChatList = styled.div`
   overflow-y: scroll;
 
+  height: 80vh;
+  background-color: #444444e8;
+
   ::-webkit-scrollbar {
     display: none;
   }
 
   -ms-overflow-style: none;
   scrollbar-width: none;
+`;
+
+const SignOut = styled.p``;
+
+const UserEmail = styled.span`
+  font-size: 12px;
 `;

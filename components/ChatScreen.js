@@ -127,10 +127,10 @@ export default function ChatScreen({ chat, messages }) {
         </HeaderInformation>
 
         <HeaderIcons>
-          <IconButton>
+          <IconButton style={{ color: "white" }}>
             <AttachFile />
           </IconButton>
-          <IconButton>
+          <IconButton style={{ color: "white" }}>
             <MoreVert />
           </IconButton>
         </HeaderIcons>
@@ -141,7 +141,7 @@ export default function ChatScreen({ chat, messages }) {
         <EndOfMessage ref={endOfMessageRef} />
       </MessageContainer>
 
-      <InputContainer>
+      <InputContainer style={{ backgroundColor: "#eee" }}>
         <InsertEmoticon />
         <Input value={input} onChange={(e) => setInput(e.target.value)} />
         <MicIcon />
@@ -163,7 +163,8 @@ const Container = styled.div``;
 const Header = styled.div`
   position: sticky;
   top: 0;
-  background-color: white;
+  background-color: #00211ce8;
+  color: #fff !important;
   z-index: 100;
 
   height: 70px;
@@ -171,7 +172,7 @@ const Header = styled.div`
   align-items: center;
   padding: 10px;
   justify-content: space-between;
-  border-bottom: 1px solid whitesmoke;
+  border: none;
 `;
 
 const HeaderInformation = styled.div`
@@ -186,18 +187,30 @@ const HeaderInformation = styled.div`
   p {
     margin: 0;
     font-size: 14px;
-    color: grey;
+    color: #fff !important;
   }
 `;
 
-const HeaderIcons = styled.div``;
+const HeaderIcons = styled.div`
+  color: #fff !important;
+  display: flex;
+  flex-wrap: nowrap;
+`;
 
 const MessageContainer = styled.div`
-  background-color: #d6d1d1;
+  background: url("https://i.pinimg.com/originals/e8/d9/4e/e8d94e1e8b6b530ad315e9385290141b.jpg")
+    center center no-repeat;
+  /* background-color: #d6d1d1; */
   padding: 30px;
   height: 85vh;
 
   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
 `;
 
 const EndOfMessage = styled.div`
@@ -205,6 +218,8 @@ const EndOfMessage = styled.div`
 `;
 
 const InputContainer = styled.form`
+  background-color: #eee;
+  border-left: 1px solid #00211ce8;
   display: flex;
   align-items: center;
   justify-content: space-around;
