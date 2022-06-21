@@ -217,7 +217,7 @@ const InputContainer = styled.form`
 `;
 
 const Input = styled.input`
-  flex: 0.98;
+  flex: 0.96;
   align-items: center;
   padding: 10px;
   outline-width: 0;
