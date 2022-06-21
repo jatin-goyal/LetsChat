@@ -17,6 +17,7 @@ export default function Login() {
     <Container>
       <Head>
         <title>Login</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <LoginContainer>
         <Logo src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c543.png" />
