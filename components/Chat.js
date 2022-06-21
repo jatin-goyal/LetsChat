@@ -33,7 +33,7 @@ export default function Chat({ id, users }) {
   return (
     <Container onClick={enterChat}>
       <UserAvatar>{recipientEmail[0].toUpperCase()}</UserAvatar>
-      <p>{recipientEmail}</p>
+      <p style={{ fontSize: "14px" }}>{recipientEmail}</p>
     </Container>
   );
 }

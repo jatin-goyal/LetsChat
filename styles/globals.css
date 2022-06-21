@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.sffff {
+  color: #eeeeeee8;
+
+  overflow: auto;
+}

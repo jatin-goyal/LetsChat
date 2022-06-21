@@ -48,11 +48,14 @@ export default function Sidebar() {
   return (
     <Container>
       <Header>
-        <UserAvatar onClick={() => signOut(auth)}>
+        <UserAvatar
+          onClick={() => signOut(auth)}
+          style={{ backgroundColor: "#ff7700e8" }}
+        >
           {user.email[0].toUpperCase()}
         </UserAvatar>
         <IconsContainer>
-          <IconButton>
+          <IconButton onClick={createChat}>
             <ChatIcon />
           </IconButton>
           <IconButton>
@@ -66,7 +69,9 @@ export default function Sidebar() {
         <SearchInput placeholder="Search in chats" />
       </Search>
 
-      <StartChat onClick={createChat}>Start a new chat</StartChat>
+      <StartChat style={{ color: "#022f62 " }} onClick={createChat}>
+        Start a new chat
+      </StartChat>
       <ChatList>
         {chatsSnapshot?.docs.map((chat) => (
           <Chat key={chat.id} id={chat.id} users={chat.data().users} />
@@ -77,6 +82,7 @@ export default function Sidebar() {
 }
 
 const Container = styled.div`
+  flex: 0.35;
   border-right: 1px solid #ccc;
   height: 100vh;
 `;
@@ -134,4 +140,11 @@ const StartChat = styled(Button)`
 
 const ChatList = styled.div`
   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
