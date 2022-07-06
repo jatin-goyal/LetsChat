@@ -16,11 +16,11 @@ export default function Login() {
   return (
     <Container>
       <Head>
-        <title>Login</title>
+        <title>LetsChat Login</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LoginContainer>
-        <Logo src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c543.png" />
+        <Logo src="https://cdn.iconscout.com/icon/free/png-256/chat-text-message-chatting-talk-notification-32-28684.png" />
         <Button
           onClick={signIn}
           variant="outlined"
